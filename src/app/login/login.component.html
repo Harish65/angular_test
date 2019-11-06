@@ -1,0 +1,33 @@
+<hr>
+<div class="card card-header">
+  <div class="block">
+    <h3 class="card bg-success text-white text-center text-uppercase">Sign In</h3>
+  </div>
+  <div class="card-block">
+    <div class="col-sm-10">
+      <div class="container">
+        <form #loginForm="ngForm">
+
+          <div class="form-group" [class.alert-danger]="email.invalid && email.touched" [class.alert-success]="email.valid && email.touched">
+            <label for="email" class="control-label">Email address</label>
+            <input type="text" required [email]="loginuser.email !== ''" name="email" class="form-control" [(ngModel)]="loginuser.email" #email="ngModel" id="email">
+            <span class="help-block" *ngIf="email.errors?.required && email.touched">Email is required</span>
+            <span class="help-block" *ngIf="email.errors?.email && email.touched">Email is invalid</span>
+          </div>
+
+          <div class="form-group" [class.alert-danger]="password.invalid && password.touched"[class.alert-success]="password.valid && password.touched">
+            <label for="pwd" class="control-label">Password:</label>
+            <input required type="password" name="password" class="form-control" [(ngModel)]="loginuser.password" #password="ngModel" id="pwd">
+            <span class="help-block" *ngIf="password.invalid && password.touched">Password is required</span>
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox">Remember me
+            </label>
+          </div>
+          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
